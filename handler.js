@@ -26,9 +26,9 @@ module.exports = async (event, context) => {
     return;
   }
 
-  const result = {
-    status: "Nuro check done!",
-  };
+  // const result = {
+  //   status: "Nuro check done!",
+  // };
 
-  context.status(200).succeed(result);
+  // context.status(200).succeed(result);
 };
