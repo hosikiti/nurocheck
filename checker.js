@@ -5,15 +5,11 @@ const slack = require("./slack");
 const chromium = require("chromium");
 
 const check = async () => {
-  try {
-    const browser = await puppeteer.launch({
-      executablePath: chromium.path,
-      args: ["--no-sandbox"],
-    });
-  } catch (err) {
-    console.error("failed to launch browser", err);
-    return;
-  }
+  console.log("launch chromium: ", chromium.path);
+  const browser = await puppeteer.launch({
+    executablePath: chromium.path,
+    args: ["--no-sandbox"],
+  });
   const page = await browser.newPage();
   await page.goto(URL);
   await page.waitFor(3000);
