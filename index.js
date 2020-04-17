@@ -1,7 +1,8 @@
 const URL = process.env.URL;
 const SLACK_HOOK_URL = process.env.SLACK_HOOK_URL;
 const puppeteer = require("puppeteer");
-(async () => {
+
+const check = async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(URL);
@@ -22,7 +23,7 @@ const puppeteer = require("puppeteer");
     }
   }
   await browser.close();
-})();
+};
 
 const notifyToSlack = (msg) => {
   if (!SLACK_HOOK_URL) {
@@ -40,4 +41,13 @@ const notifyToSlack = (msg) => {
     },
   };
   request.post(options, function (error, response, body) {});
+};
+
+module.exports = async (event, context) => {
+  await check();
+  const result = {
+    status: "Check done!",
+  };
+
+  context.status(200).succeed(result);
 };
