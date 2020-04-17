@@ -44,7 +44,7 @@ const notifyToSlack = (msg) => {
 };
 
 module.exports = async (event, context) => {
-  await check();
+  // await check();
   const result = {
     status: "Check done!",
   };
