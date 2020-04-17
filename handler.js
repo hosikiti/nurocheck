@@ -1,12 +1,13 @@
 const checker = require("./checker");
 const slack = require("./slack");
+const fs = require("fs");
 
 module.exports = async (event, context) => {
   try {
-    // await checker.check();
-
     const chromium = require("chromium");
     const { execFile } = require("child_process");
+    // await checker.check();
+    console.log("chrome path", chromium.path, fs.existsSync(chromium.path));
 
     execFile(chromium.path, ["https://google.com"], (err) => {
       console.log("Hello Google!", err);
