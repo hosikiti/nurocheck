@@ -3,10 +3,17 @@ const slack = require("./slack");
 
 module.exports = async (event, context) => {
   try {
-    await checker.check();
+    // await checker.check();
+
+    const chromium = require("chromium");
+    const { execFile } = require("child_process");
+
+    execFile(chromium.path, ["https://google.com"], (err) => {
+      console.log("Hello Google!");
+    });
   } catch (err) {
     context.status(200).succeed({
-      status: "Browser failed" + String(err),
+      status: "Browser failed" + `[path: ${chromium.path}]` + String(err),
     });
     return;
   }
