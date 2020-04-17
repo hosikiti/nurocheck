@@ -8,6 +8,7 @@ const check = async () => {
   try {
     const browser = await puppeteer.launch({
       executablePath: chromium.path,
+      args: ["--no-sandbox"],
     });
   } catch (err) {
     console.error("failed to launch browser", err);
