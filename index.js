@@ -1,3 +1,3 @@
 const checker = require("./checker");
 
-checker();
+checker.check();

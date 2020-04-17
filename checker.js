@@ -33,4 +33,6 @@ const check = async () => {
   await browser.close();
 };
 
-module.exports = check;
+module.exports = {
+  check: check,
+};
