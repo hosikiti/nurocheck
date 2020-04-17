@@ -1,13 +1,14 @@
 const checker = require("./checker");
 const slack = require("./slack");
 const fs = require("fs");
+const chromium = require("chromium");
+const puppeteer = require("puppeteer-core");
 
 module.exports = async (event, context) => {
   try {
-    const chromium = require("chromium");
-    const puppeteer = require("puppeteer-core");
-
+    console.log("LAUNCH CHROME!!!");
     const PUPPETEER_OPTIONS = {
+      executablePath: chromium.path,
       headless: true,
       args: [
         "--disable-gpu",
@@ -26,20 +27,10 @@ module.exports = async (event, context) => {
 
     const browser = await puppeteer.launch(PUPPETEER_OPTIONS);
 
-    // const { execFile } = require("child_process");
     // // await checker.check();
-
-    // execFile(chromium.path, ["https://google.com"], (err, stdout, stderr) => {
-    //   context.status(200).succeed({
-    //     path: chromium.path,
-    //     exists: fs.existsSync(chromium.path),
-    //     stdout: stdout,
-    //     stderr: stderr,
-    //     err: err,
-    //   });
-    //   return;
-    //   console.log("Hello Google!", err);
-    // });
+    context.status(200).succeed({
+      status: "done",
+    });
   } catch (err) {
     context.status(200).succeed({
       status: "Browser failed" + `[path: ${chromium.path}]` + String(err),
