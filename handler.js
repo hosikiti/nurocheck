@@ -8,6 +8,11 @@ module.exports = async (event, context) => {
     const { execFile } = require("child_process");
     // await checker.check();
     console.log("chrome path", chromium.path, fs.existsSync(chromium.path));
+    context.status(200).succeed({
+      path: chromium.path,
+      exists: fs.existsSync(chromium.path),
+    });
+    return;
 
     execFile(chromium.path, ["https://google.com"], (err) => {
       console.log("Hello Google!", err);
