@@ -43,10 +43,10 @@ const notifyToSlack = (msg) => {
   request.post(options, function (error, response, body) {});
 };
 
-module.exports = (event, context) => {
-  // await check();
+module.exports = async (event, context) => {
+  await check();
   const result = {
-    status: "Check done!",
+    status: "Nuro check done!",
   };
 
   context.status(200).succeed(result);
