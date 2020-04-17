@@ -1,0 +1,13 @@
+{
+  "name": "nurocheck",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^3.0.0",
+    "request": "^2.88.2"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
