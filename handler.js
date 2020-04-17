@@ -9,7 +9,7 @@ module.exports = async (event, context) => {
     const { execFile } = require("child_process");
 
     execFile(chromium.path, ["https://google.com"], (err) => {
-      console.log("Hello Google!");
+      console.log("Hello Google!", err);
     });
   } catch (err) {
     context.status(200).succeed({
