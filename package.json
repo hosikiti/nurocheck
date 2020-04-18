@@ -9,6 +9,7 @@
     "request": "^2.88.2"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "postinstall": "echo 'HEY' && apk add --no-cache nss"
   }
 }
