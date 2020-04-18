@@ -1,46 +1,49 @@
 const checker = require("./checker");
 const slack = require("./slack");
 const fs = require("fs");
-const chromium = require("chromium");
-const puppeteer = require("puppeteer-core");
+const puppeteer = require("puppeteer");
 
 module.exports = async (event, context) => {
   try {
     console.log("LAUNCH CHROME!!!");
-    // const PUPPETEER_OPTIONS = {
-    //   executablePath: chromium.path,
-    //   headless: true,
-    //   args: [
-    //     "--disable-gpu",
-    //     "--disable-dev-shm-usage",
-    //     "--disable-setuid-sandbox",
-    //     "--timeout=30000",
-    //     "--no-first-run",
-    //     "--no-sandbox",
-    //     "--no-zygote",
-    //     "--single-process",
-    //     "--proxy-server='direct://'",
-    //     "--proxy-bypass-list=*",
-    //     "--deterministic-fetch",
-    //   ],
-    // };
 
-    // const browser = await puppeteer.launch(PUPPETEER_OPTIONS);
+    const PUPPETEER_OPTIONS = {
+      // executablePath: chromium.path,
+      // headless: true,
+      args: [
+        "--no-sandbox",
+        "--disable-gpu",
+        "--disable-dev-shm-usage",
+        "--disable-setuid-sandbox",
+        // "--timeout=30000",
+        // "--no-first-run",
+        // "--no-zygote",
+        // "--single-process",
+        // "--proxy-server='direct://'",
+        // "--proxy-bypass-list=*",
+        // "--deterministic-fetch",
+      ],
+    };
 
-    const { execFile } = require("child_process");
+    const browser = await puppeteer.launch(PUPPETEER_OPTIONS);
+    const page = await browser.newPage();
+    await page.goto("https://www.google.com");
+    console.log("title", await page.title());
+    process.exit(0);
+    return;
 
-    execFile(chromium.path, ["--version"], (err) => {
-      console.log("Hello Google!", err);
-    });
+    // const { execFile } = require("child_process");
+
+    // execFile(chromium.path, ["--version"], (err) => {
+    //   console.log("Hello Google!", err);
+    // });
 
     // // await checker.check();
-    context.status(200).succeed({
-      status: "done",
-    });
+    // context.status(200).succeed({
+    //   status: "done",
+    // });
   } catch (err) {
-    context.status(200).succeed({
-      status: "Browser failed" + `[path: ${chromium.path}]` + String(err),
-    });
+    console.error(err);
     return;
   }
 

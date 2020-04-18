@@ -1,8 +1,7 @@
 const URL = process.env.URL;
-const puppeteer = require("puppeteer-core");
+const puppeteer = require("puppeteer");
 const NoticeMessage = "Nuro光の予約ができるようになったかも！";
 const slack = require("./slack");
-const chromium = require("chromium");
 
 const check = async () => {
   console.log("launch chromium: ", chromium.path);
