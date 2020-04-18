@@ -9,7 +9,6 @@
     "request": "^2.88.2"
   },
   "scripts": {
-    "start": "node index.js",
-    "postinstall": "sh dep.sh"
+    "start": "node index.js"
   }
 }
