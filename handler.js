@@ -7,25 +7,31 @@ const puppeteer = require("puppeteer-core");
 module.exports = async (event, context) => {
   try {
     console.log("LAUNCH CHROME!!!");
-    const PUPPETEER_OPTIONS = {
-      executablePath: chromium.path,
-      headless: true,
-      args: [
-        "--disable-gpu",
-        "--disable-dev-shm-usage",
-        "--disable-setuid-sandbox",
-        "--timeout=30000",
-        "--no-first-run",
-        "--no-sandbox",
-        "--no-zygote",
-        "--single-process",
-        "--proxy-server='direct://'",
-        "--proxy-bypass-list=*",
-        "--deterministic-fetch",
-      ],
-    };
+    // const PUPPETEER_OPTIONS = {
+    //   executablePath: chromium.path,
+    //   headless: true,
+    //   args: [
+    //     "--disable-gpu",
+    //     "--disable-dev-shm-usage",
+    //     "--disable-setuid-sandbox",
+    //     "--timeout=30000",
+    //     "--no-first-run",
+    //     "--no-sandbox",
+    //     "--no-zygote",
+    //     "--single-process",
+    //     "--proxy-server='direct://'",
+    //     "--proxy-bypass-list=*",
+    //     "--deterministic-fetch",
+    //   ],
+    // };
 
-    const browser = await puppeteer.launch(PUPPETEER_OPTIONS);
+    // const browser = await puppeteer.launch(PUPPETEER_OPTIONS);
+
+    const { execFile } = require("child_process");
+
+    execFile(chromium.path, ["--version"], (err) => {
+      console.log("Hello Google!", err);
+    });
 
     // // await checker.check();
     context.status(200).succeed({
