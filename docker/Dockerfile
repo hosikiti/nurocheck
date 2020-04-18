@@ -1,3 +1,5 @@
+# Dockerfile for installing NodeJS and Google Chrome for Puppeteer
+# ref: https://github.com/puppeteer/puppeteer/blob/master/docs/troubleshooting.md#running-puppeteer-in-docker
 FROM node:10-slim
 
 # Install latest chrome dev package and fonts to support major charsets (Chinese, Japanese, Arabic, Hebrew, Thai and a few others)
