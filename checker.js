@@ -3,10 +3,9 @@ const puppeteer = require("puppeteer");
 const NoticeMessage = "Nuro光の予約ができるようになったかも！";
 const slack = require("./slack");
 
-const check = async () => {
-  console.log("launch chromium: ", chromium.path);
+const check = async (chromePath) => {
   const browser = await puppeteer.launch({
-    executablePath: chromium.path,
+    executablePath: chromePath,
     args: ["--no-sandbox"],
   });
   const page = await browser.newPage();
