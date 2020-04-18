@@ -10,6 +10,6 @@
   },
   "scripts": {
     "start": "node index.js",
-    "postinstall": "echo 'HEY' && apk add --no-cache nss"
+    "postinstall": "sh dep.sh"
   }
 }
