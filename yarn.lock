@@ -46,11 +46,6 @@ assert-plus@1.0.0, assert-plus@^1.0.0:
   resolved "https://registry.yarnpkg.com/assert-plus/-/assert-plus-1.0.0.tgz#f12e0f3c5d77b0b1cdd9146942e4e96c1e4dd525"
   integrity sha1-8S4PPF13sLHN2RRpQuTpbB5N1SU=
 
-async@^3.1.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/async/-/async-3.2.0.tgz#b3a2685c5ebb641d3de02d161002c60fc9f85720"
-  integrity sha512-TR2mEZFVOj2pLStYxLht7TyfuRzaydfpxr3k9RpHIzMgw7A64dzsdqCxH1WJyQdoe8T10nDXd9wnEigmiuHIZw==
-
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
@@ -247,13 +242,6 @@ get-stream@^5.1.0:
   integrity sha512-EXr1FOzrzTfGeL0gQdeFEvOMm2mzMOglyiOXSTpPC+iAjAKftbr3jpCMWynogwYnM+eSj9sHGc6wjIcDvYiygw==
   dependencies:
     pump "^3.0.0"
-
-getos@^3.1.5:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/getos/-/getos-3.1.5.tgz#f1e0d29beb6f2ed6585567e79eb49a5ec07da016"
-  integrity sha512-jcz1iLi9LCF1JfGNIh+A92oFa072BRFQPzz5/bBVwOuP16VSvmxDA4zjlz/7uqqwQoJ3pK6+xaggbK2EZRicNw==
-  dependencies:
-    async "^3.1.0"
 
 getpass@^0.1.1:
   version "0.1.7"
