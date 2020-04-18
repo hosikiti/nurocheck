@@ -7,7 +7,10 @@ const childProcess = require("child_process");
 
 module.exports = async (event, context) => {
   const spawn = childProcess.spawn("apk", [
-    "add --no-cache nss freetype freetype-dev harfbuzz ca-certificates ttf-freefont",
+    "add",
+    "--no-cache",
+    "nss",
+    // freetype freetype-dev harfbuzz ca-certificates ttf-freefont"
   ]);
 
   spawn.stdout.on("data", (data) => {
