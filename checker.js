@@ -35,6 +35,7 @@ const check = async (chromePath) => {
     }
   }
   await browser.close();
+  console.log("browser close done");
 };
 
 module.exports = {
