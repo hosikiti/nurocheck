@@ -14,10 +14,8 @@ const check = async (chromePath) => {
   await page.goto(URL);
   await page.waitFor(3000);
   console.log("click element");
-  await Promise.all([
-    page.waitForSelector("input#input", { timeout: 10000 }),
-    page.click("input#input"),
-  ]);
+  await page.waitForSelector("input#input", { timeout: 10000 });
+  await page.click("input#input");
   page.waitFor(3000);
   console.log("check message...");
   const el = await page.$(".var-01");
