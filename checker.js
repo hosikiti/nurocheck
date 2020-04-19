@@ -4,16 +4,20 @@ const NoticeMessage = "Nuro光の予約ができるようになったかも！";
 const slack = require("./slack");
 
 const check = async (chromePath) => {
+  console.log("open browser");
   const browser = await puppeteer.launch({
     executablePath: chromePath,
     args: ["--no-sandbox"],
   });
   const page = await browser.newPage();
+  console.log("goto url");
   await page.goto(URL);
   await page.waitFor(3000);
+  console.log("click element");
   await page.click("input#input");
   await page.waitFor(3000);
 
+  console.log("check message...");
   const el = await page.$(".var-01");
   if (!el) {
     slack.notify(NoticeMessage);
