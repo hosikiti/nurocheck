@@ -1,3 +1,8 @@
 const checker = require("./checker");
 
-checker.check(process.env.CHROME_PATH);
+try {
+  checker.check(process.env.CHROME_PATH);
+} catch (err) {
+  console.error("check error: ", String(err));
+  process.exit(1);
+}
