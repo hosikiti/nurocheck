@@ -14,10 +14,15 @@ const check = async (chromePath) => {
   await page.goto(URL);
   await page.waitFor(3000);
   console.log("click element");
-  await page.waitForSelector("input#input", { timeout: 10000 });
-  await page.click("input#input");
-  page.waitFor(3000);
-  console.log("check message...");
+  try {
+    await page.waitForSelector("input#input", { timeout: 10000 });
+    await page.click("input#input");
+    page.waitFor(3000);
+    console.log("check message...");
+  } catch (err) {
+    console.error("cannot find element");
+    return;
+  }
   const el = await page.$(".var-01");
   if (!el) {
     slack.notify(NoticeMessage);
